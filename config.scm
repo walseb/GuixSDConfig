@@ -1,7 +1,3 @@
-;; This is an operating system configuration template
-;; for a "desktop" setup with GNOME and Xfce where the
-;; root partition is encrypted with LUKS.
-
 (use-modules (gnu) (gnu system nss) (gnu packages admin) (gnu packages multiprecision) (gnu packages mpd) (gnu packages gnupg) (gnu packages pdf) (gnu packages compression) (gnu packages xdisorg) (gnu 
 packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages code))
 
@@ -34,7 +30,7 @@ packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages cod
  ;;(bootloader (bootloader-configuration
  ;;              (bootloader grub-bootloader)
  ;;              ;; VM disk
- ;;              (target "/dev/vda")))
+ ;;              (target "/dev/sda")))
 
  ;; VM support
  (initrd-modules (append (list "virtio_blk" "virtio_pci" "shpchp")
@@ -92,9 +88,8 @@ packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages cod
                   font-inconsolata
                   font-gnu-freefont-ttf
                   %base-packages))
-
- ;; Add GNOME and/or Xfce---we can choose at the log-in
- ;; screen with F1.  Use the "desktop" services, which
+ 
+ ;; Use the "desktop" services, which
  ;; include the X11 log-in service, networking with
  ;; NetworkManager, and more.
  ;; (services (cons* (gnome-desktop-service)
