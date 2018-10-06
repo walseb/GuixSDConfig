@@ -3,8 +3,6 @@ packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages cod
 
 (use-service-modules networking ssh)
 
-(use-service-modules desktop)
-
 (use-package-modules 
                      certs
                      version-control
@@ -55,9 +53,10 @@ packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages cod
 
  ;; This is where we specify system-wide packages.
  (packages (cons* nss-certs         ;for HTTPS access
-;;		  xorg-server
-;;		  xinit
+		  xorg-server
+		  xinit
 		  xrandr
+		  xf86-input-evdev
                   setxkbmap
                   pulseaudio
                   pavucontrol
@@ -84,6 +83,8 @@ packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages cod
                   aspell-dict-sv
                   unzip
                   rxvt-unicode
+		  ;; Xorg needs this
+		  xterm
 		  ;; Fonts
                   font-inconsolata
                   font-gnu-freefont-ttf
@@ -95,9 +96,9 @@ packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages cod
  ;; (services (cons* (gnome-desktop-service)
  ;;                  (xfce-desktop-service)
  ;;                  %desktop-services))
- (services (cons*
+;; (services (cons*
 ;;            (dhcp-client-service)
-            %desktop-services))
+  ;;          %desktop-services))
 
  ;; Allow resolution of '.local' host names with mDNS.
  (name-service-switch %mdns-host-lookup-nss))
