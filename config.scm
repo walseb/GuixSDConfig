@@ -1,4 +1,4 @@
-(use-modules (gnu) (gnu system nss) (gnu packages admin) (gnu packages linux) (gnu packages glib) (gnu packages gl)(gnu packages libunwind)(gnu packages nettle) (gnu packages multiprecision) (gnu packages mpd) (gnu packages gnupg) (gnu packages pdf) (gnu packages compression) (gnu packages xdisorg) (gnu packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages code))
+(use-modules (gnu) (gnu system nss) (gnu packages disk) (gnu packages admin) (gnu packages linux) (gnu packages glib) (gnu packages gl)(gnu packages libunwind)(gnu packages nettle) (gnu packages multiprecision) (gnu packages mpd) (gnu packages gnupg) (gnu packages pdf) (gnu packages compression) (gnu packages xdisorg) (gnu packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages code))
 
 (use-service-modules networking ssh)
 
@@ -18,6 +18,24 @@
  (timezone "Europe/Stockholm")
  (locale "en_US.utf8")
 
+ 
+ ;; Mount disk
+ (file-systems (cons (file-system
+                      (device (file-system-label "my-root"))
+                      (mount-point "/")
+                      (type "ext4"))
+		     (cons (file-system
+			    (device "/dev/vda1/")
+			    (mount-point "/boot/efi/")
+			    (type "vfat"))
+			   %base-file-systems)))
+ 
+ 
+ ;; (file-systems (file-system
+ ;; (device "/dev/vda1/")
+ ;; (mount-point "/boot/efi/")
+ ;; (type "vfat")))
+
  ;; Use UEFI
  (bootloader (bootloader-configuration
               (bootloader grub-efi-bootloader)
@@ -30,15 +48,8 @@
  ;;              (target "/dev/sda")))
 
  ;; VM support
- (initrd-modules (append (list "virtio_blk" "virtio_pci" "shpchp")
+ (initrd-modules (append (list "virtio_blk" "virtio_pci")
                          %base-initrd-modules))
-
- ;; Mount disk
- (file-systems (cons (file-system
-                      (device (file-system-label "my-root"))
-                      (mount-point "/")
-                      (type "ext4"))
-                     %base-file-systems))
 
  ;; Setup user
  (users (cons (user-account
@@ -94,6 +105,7 @@
 		  ;;		  amixer
 		  atool
 		  htop
+		  dosfstools
                   git
                   wget
                   aspell
@@ -121,4 +133,3 @@
 
  ;; Allow resolution of '.local' host names with mDNS.
  (name-service-switch %mdns-host-lookup-nss))
-
