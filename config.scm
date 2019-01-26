@@ -19,16 +19,14 @@
  (host-name "guix-VM")
  (timezone "Europe/Stockholm")
  (locale "en_US.utf8")
-
- (define my/main-partition "/dev/sda1")
  
- ;; Mount disk
+ ;; Mount disks
  (file-systems (cons (file-system
 		      (device (file-system-label "my-root"))
 		      (mount-point "/")
 		      (type "ext4"))
 		     (cons (file-system
-			    (device my/main-partition)
+			    (device "EFI-PARTITION-NAME")
 			    (mount-point "/boot/efi/")
 			    (type "vfat"))
 			   %base-file-systems)))
@@ -45,8 +43,8 @@
  ;;              (target "/dev/sda")))
 
  ;; VM support - "shpchp" causes problems
- (initrd-modules (append (list "virtio_blk" "virtio_pci")
-                         %base-initrd-modules))
+ ;;(initrd-modules (append (list "virtio_blk" "virtio_pci")
+ ;;                        %base-initrd-modules))
 
  ;; Setup user
  (users (cons (user-account
