@@ -1,4 +1,4 @@
-(use-modules (gnu) (gnu system nss) (gnu packages display-managers) (gnu packages bash) (rnrs lists) (gnu services xorg) (gnu packages disk) (gnu packages admin) (gnu packages linux) (gnu packages glib) (gnu packages gl)(gnu packages libunwind)(gnu packages nettle) (gnu packages multiprecision) (gnu packages mpd) (gnu packages gnupg) (gnu packages pdf) (gnu packages compression) (gnu packages xdisorg) (gnu packages fonts) (gnu packages xorg) (gnu packages imagemagick) (gnu packages code))
+(use-modules (gnu) (gnu system nss) (gnu packages display-managers) (gnu packages bash) (rnrs lists) (gnu services xorg) (gnu packages disk) (gnu packages admin) (gnu packages linux) (gnu packages glib) (gnu packages gl)(gnu packages libunwind)(gnu packages nettle) (gnu packages multiprecision) (gnu packages mpd) (gnu packages gnupg) (gnu packages pdf) (gnu packages compression) (gnu packages xdisorg) (gnu packages fonts) (gnu packages xorg) (gnu packages gnuzilla) (gnu packages imagemagick) (gnu packages code))
 
 (use-service-modules desktop)
 
