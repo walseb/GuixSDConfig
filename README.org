@@ -25,7 +25,7 @@ Right now you have to use EFI, but for GPT you do:
 =parted=
 
 ** Format like this:
-make 2 partitions (and maybe swap), efi (around 0.5G) and the root partition (the rest) if EFI is not called "vda1" (show using lsblk), open config and change "ROOT-PARTITION-NAME" to the partition name
+make 2 partitions (and maybe swap), efi (around 0.5G) and the root partition (the rest) if EFI is not called "vda1" (show using lsblk), open config and change "EFI-PARTITION-NAME" to the partition name
 
 make efi partition vfat
 =mkfs.vfat /dev/EFI-PARTITION-NAME=
