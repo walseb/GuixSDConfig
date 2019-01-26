@@ -20,6 +20,7 @@
  (timezone "Europe/Stockholm")
  (locale "en_US.utf8")
 
+ (define my/main-disk "/dev/sda")
  
  ;; Mount disk
  (file-systems (cons (file-system
@@ -27,7 +28,7 @@
 		      (mount-point "/")
 		      (type "ext4"))
 		     (cons (file-system
-			    (device "/dev/vda1")
+			    (device my/main-disk)
 			    (mount-point "/boot/efi/")
 			    (type "vfat"))
 			   %base-file-systems)))
