@@ -83,14 +83,16 @@
 		  ;; xrdb
 
 		  icecat
+		  ;; Login manager
 		  slim
+		  
                   pulseaudio
                   pavucontrol
                   emacs
 		  openssh
 		  imagemagick
 		  the-silver-searcher
-		  ;;mono
+		  mono
 		  lm-sensors
 		  poppler
 		  gnupg
@@ -98,13 +100,11 @@
 		  redshift
 		  mpd
 		  mpc
-		  ;;		  amixer
 		  atool
 		  htop
 		  dosfstools
                   git
                   wget
-                  aspell
                   aspell
                   aspell-dict-en
                   aspell-dict-sv
