@@ -1,0 +1,43 @@
+* Internet
+=ifconfig -a= or =ip a=
+
+** wired
+ifconfig ~interface~ up
+
+** wireless
+read gnu documentation
+
+** Last step
+dhclient -v ~interface~
+
+ping 8.8.8.8
+
+** Headless installation
+starting ssh
+=herd start ssh-daemon=
+
+* Disk
+** GUID/GPT
+Right now you have to use EFI, but for GPT you do:
+=cfdisk=
+
+** EFI
+=parted=
+
+** Format like this:
+make 2 partitions (and maybe swap), efi (around 0.5G) and the root partition (the rest) if EFI is not called "vda1" (show using lsblk), open config and change "ROOT-PARTITION-NAME" to the partition name
+
+make efi partition vfat
+=mkfs.vfat /dev/EFI-PARTITION-NAME=
+
+make root partition ext4 and label it "my-root" with:
+=mkfs.ext4 -L my-root /dev/MAIN-PARTITION-NAME=
+
+* Install config
+Easiest way is to use wget
+=guix package -i wget=
+then
+=wget --no-check-certificate https://raw.githubusercontent.com/walseb/GuixSDConfig/master/config.scm=
+if using Qemu as virtual machine with virtio disks, reconfigure config.scm to enable support for it
+then after modifying it like said above, 
+=guix system reconfigure config.scm=
